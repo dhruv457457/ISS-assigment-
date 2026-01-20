@@ -1,0 +1,86 @@
+.nav-btn {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  text-align: left;
+  font-weight: 500;
+  color: #334155;
+  transition: 0.2s;
+}
+
+.nav-btn:hover {
+  background: #F1F5F9;
+}
+
+.nav-btn.active {
+  background: #EFF6FF;
+  color: #2563EB;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.section-desc {
+  font-size: 0.875rem;
+  color: #64748B;
+  margin-bottom: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 160px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background: #2563EB;
+  color: white;
+  font-weight: 600;
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background: #059669;
+  color: white;
+  font-weight: 600;
+}
+
+.output {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px dashed #CBD5E1;
+  font-family: monospace;
+}
+
+.decoded-box {
+  padding: 12px;
+  border-radius: 10px;
+  background: #F8FAFC;
+  border: 1px solid #E5E7EB;
+}
+
+.view {
+  animation: fade 0.25s ease;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
