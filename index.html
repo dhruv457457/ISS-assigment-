@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CipherDesk</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#F6F7FB',
+            card: '#FFFFFF',
+            primary: '#2563EB',
+            secondary: '#059669',
+            accent: '#F59E0B',
+            border: '#E5E7EB',
+            muted: '#64748B'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-bg text-slate-900 min-h-screen flex flex-col">
+
+<!-- HEADER -->
+<header class="bg-card border-b border-border px-4 sm:px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+  <div>
+    <h1 class="text-xl font-semibold">CipherDesk</h1>
+    <p class="text-xs text-muted">Private Message Encoding Workspace</p>
+  </div>
+  <span class="text-xs text-muted">🔒 Runs locally in your browser</span>
+</header>
+
+<!-- APP -->
+<main class="flex flex-col md:flex-row flex-1">
+
+  <!-- SIDEBAR -->
+  <aside class="md:w-64 bg-card border-b md:border-b-0 md:border-r border-border p-4 space-y-2">
+    <button class="nav-btn active" data-view="key">🔐 Key Vault</button>
+    <button class="nav-btn" data-view="encrypt">📝 Secure Draft</button>
+    <button class="nav-btn" data-view="decrypt">📦 Secure Transfer</button>
+  </aside>
+
+  <!-- CONTENT -->
+  <section class="flex-1 p-4 sm:p-8 space-y-6">
+
+    <!-- KEY VAULT -->
+    <div id="view-key" class="view">
+      <h2 class="section-title">Key Vault</h2>
+      <p class="section-desc">This key controls how messages are encoded and decoded.</p>
+
+      <input id="globalKey" maxlength="25"
+        placeholder="Enter secret key"
+        class="input"
+        oninput="updateMatrixVisual()" />
+
+      <div class="mt-6">
+        <p class="text-sm font-medium mb-2">Cipher Blueprint</p>
+        <div id="matrix-display" class="grid grid-cols-5 gap-2 w-max"></div>
+      </div>
+    </div>
+
+    <!-- ENCRYPT -->
+    <div id="view-encrypt" class="view hidden">
+      <h2 class="section-title">Secure Draft</h2>
+      <textarea id="plaintext" class="textarea"
+        placeholder="Write a message intended for secure transfer..."></textarea>
+
+      <button onclick="encrypt()" class="btn-primary mt-4">
+        🔒 Seal Message
+      </button>
+
+      <div class="mt-4">
+        <p class="label">Secure Package</p>
+        <input id="ciphertext-result" readonly class="output"/>
+      </div>
+    </div>
+
+    <!-- DECRYPT -->
+    <div id="view-decrypt" class="view hidden">
+      <h2 class="section-title">Secure Transfer</h2>
+
+      <input id="ciphertext-input" class="input"
+        placeholder="Paste received secure package"/>
+
+      <button onclick="decrypt()" class="btn-secondary mt-4">
+        🔓 Open Package
+      </button>
+
+      <div class="mt-4">
+        <p class="label">Decoded Content</p>
+        <p id="plaintext-result" class="decoded-box">
+          Content will appear here...
+        </p>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
